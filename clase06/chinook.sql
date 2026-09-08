@@ -104,3 +104,11 @@ LIMIT 6;
 -- Consigna: Seleccionar las primeras 5 pistas de audio (MediaTypeId = 1) cuya duración 
 -- esté entre 3 y 4 minutos (180.000 a 240.000 ms), que su nombre contenga 'War' 
 -- o 'Love', pero cuyo compositor NO incluya a 'Miles Davis'.
+
+SELECT TrackId, Name, AlbumId, MediaTypeId, Milliseconds, Composer
+FROM track
+WHERE MediaTypeId = 1
+AND (Milliseconds BETWEEN 180000 AND 240000)
+AND (Name LIKE "%War%" OR Name LIKE "%Love%") 
+AND (Composer NOT LIKE "%Miles Davis%" )
+LIMIT 5;
